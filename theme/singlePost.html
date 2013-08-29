@@ -1,0 +1,58 @@
+<!doctype html> 
+
+<?php 
+	$post = $posts->fetch()[$key]; 
+	if (!$post->pub) {
+		header("Location: index.php");
+	} 
+?>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title><?= $post->title ?></title>
+
+	<link rel="stylesheet" href="theme/css/main.css" />
+</head>
+<body>
+	<header>
+		<div class="container">
+			<?php include 'theme/fragments/header.html' ?>
+		</div>
+	</header>
+
+	<section id="main"> 
+		<div class="container">
+			<article class="<?= str_replace(" ", "", $post->title) ?>  ">
+				<h2> 
+					<?= $post->title ?> <br />
+					<small> written <em>  <?= date('D, d M Y', $post->date) ?> </em> </small> 
+					<small> by <em>  <?= $post->author ?> </em> </small>  
+				</h2>
+				<?= $post->content ?>
+
+				<aside>
+					<div class="cat"> 
+						Filled in category: 
+						<b> <?= $post->postType ?> </b> 
+					</div>
+					<div class="tags"> 
+						Keywords: 
+						<?php foreach ($post->keywords as $word) : ?>
+							<a href=""> <?= $word ?> </a> 
+						<?php endforeach; ?>  
+					</div>
+				</aside>
+
+			</article>
+		</div>
+	</section>
+	<footer>
+		<div class="container">
+			<?php include 'theme/fragments/footer.html' ?>
+		</div>
+	</footer>
+
+	<?php // print_r($post->keywords) ?>
+
+</body>
+</html>

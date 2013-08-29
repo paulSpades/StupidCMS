@@ -1,0 +1,13 @@
+
+<h1 class="logo">
+	<a href="index.php"><b>Stup!d</b> Site</a>
+</h1>
+
+<nav>
+	<a href="index.php">Home</a>
+	<?php foreach ($pages->fetchif("pub","true") as $key => $p) : ?>
+		<a href="?page=<?= $key ?>"> <?= $p->title ?> </a>
+	<?php endforeach; ?>
+	<small><a href="cms/">Backend</a></small>
+</nav>
+

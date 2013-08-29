@@ -1,0 +1,22 @@
+
+<?php  
+	$postId = $_GET['post'];
+	$posts = new Data('posts');
+	$post = $posts->fetch()[$postId];
+?>
+
+
+<nav>
+	<?php if ( $postId > 0 ) : ?>
+		<a href="?post=<?= $postId - 1 ?>">
+			<em> &larr; </em>
+		</a>
+	<?php 
+		endif; 
+		if ($postId < (count($posts->fetch()) - 1) ) :  
+	?>
+		<a href="?post=<?= $postId + 1 ?>">
+			<em> &rarr; </em>
+		</a>
+	<?php endif; ?>
+</nav>

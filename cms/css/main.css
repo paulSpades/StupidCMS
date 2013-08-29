@@ -1,0 +1,120 @@
+body{
+	margin: 0;
+	font-family: 'Lato', 'Arial', 'Helvetica', sans-serif;
+}
+
+section, article, header, footer, div, li{
+	overflow: hidden;
+}
+
+header{
+	background: #222;
+	color: #aaa;
+	padding: 1em;
+}
+	header a{
+		color: #ccc;
+		text-decoration: none;
+		*display: inline;
+		display: inline-block;
+		padding: .5em .5em;
+		font-size: 0.9em;
+	} 
+		header a:hover {
+			color: #fff;
+		}
+	header .logo{
+		float: left;
+		width: 30%;
+		margin: 0;
+	}
+		header .logo a{
+			padding: 0;
+			text-align: center;
+		}
+	header nav{
+		float: right;
+		width: 60%;
+		text-align: right;
+	}
+
+.container{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#sidebar {
+	float: left;
+	width: 20%;
+	margin-right: 3%;
+	padding: 1%;
+	background: #eee;
+}
+#content{
+	float: left;
+	clear: none;
+	width: 70%;
+}
+	article ul{
+		padding: 0;
+	}
+
+	article ul li{
+		overflow: hidden;
+		list-style-type: none;
+		padding: .5em 2em;
+		margin-bottom: 1px;
+		border-top: 1px dashed #eee;
+		border-radius: 2px;
+	}
+		article ul li:hover{
+			background: #eee;
+		}
+			article ul li:hover em,
+			article ul li:hover b{
+				color: #444;
+			}
+
+	article ul li em, 
+	article ul li b{
+		float: right;
+		width: 20%;
+		text-align: center;
+		padding: 0 1em;
+		color: #999;
+	}
+
+footer{
+	background: #eee;
+	color: #999;
+}
+
+input, select, textarea{
+	border-radius: 4px;
+	font-size: 1.2em;
+	font-family: 'Lato', 'Arial', 'Helvetica', sans-serif;
+}
+
+form input[type="text"],
+form textarea {
+	border: 1px solid #aaa;
+	display: block;
+	width: 90%;
+	max-width: 90%;
+	padding: .5em 1em;
+}
+form input[type="submit"]{
+	display: block;
+	border: 3px solid #eee;
+	padding: .5em 2em;
+	margin: .5em;
+	background: #666;
+	color: #aaa;
+}
+form textarea{
+	height: 10em;
+}
+
+
+
+

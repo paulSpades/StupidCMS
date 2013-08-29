@@ -1,0 +1,66 @@
+<?php 
+
+	$pages = new Data('../pages');
+
+	if(isset($_POST['title']) && isset($_POST['content'])){
+
+		$pub = $_POST['pub'];
+		($pub === '0') ? $pub = false : $pub = true; 
+
+		$show = $_POST['show'];
+		($show === '0') ? $show = false : $show = true; 
+		
+		$title = $_POST['title'];
+		$content = $_POST['content'];
+
+		$new_page = new Page($pub, $title, $content, $show);
+
+		if (isset($_GET['pageKey']) && !empty($_GET['pageKey'])){
+			$key = $_GET['pageKey'];
+			$pages->update($key, $new_page);
+		}
+		else {
+			$pages->add($new_page);
+		}
+		
+	}
+	if (isset($_GET['pageKey']) && !empty($_GET['pageKey'])){
+		$key = $_GET['pageKey'];
+		$currentPage = $pages->fetch()[$key];
+
+		// echo "<pre>"; print_r($currentPage); 
+
+		$pub = $currentPage->publish;
+		$title = $currentPage->title;
+		$keywords = $currentPage->keywords;
+		$content = $currentPage->content;
+
+	} else {
+		$pub = false;
+		$title = '';
+		$keywords = '';
+		$content = '';
+	}
+?>
+
+
+<article class="new">
+	<h3> Page <?= $title ?> : </h3>
+	<form method="post">
+		<input name="title" type="text" placeholder="Title" value="<?= $title ?>" /> <br>
+		<textarea name="content" placeholder="Content"><?= $content ?></textarea> <br>
+
+		<input name="keywords" type="text" placeholder="keywords:" value="<?= $keywords ?>" /> <br>
+		
+		<label for="pub"> Publish: </label>
+		
+		<input name="pub" <?php if(!$pub): ?> checked <?php endif; ?> value="0" type="radio" />
+		<label for="pub">no</label> 
+		<input name="pub" <?php if($pub): ?> checked <?php endif; ?> value="1" type="radio" />
+		<label for="pub">yes</label> <br>
+
+		<input type="submit" value="Save Page" />
+
+	</form>
+
+</article>
