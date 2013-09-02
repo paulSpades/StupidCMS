@@ -1,7 +1,7 @@
 <!doctype html> 
 
 <?php 
-	$page = $pages->fetch()[$key]; 
+	$page = $pages->fetchif("pub","true")[$key]; 
 	if (!$page->pub) {
 		header("Location: index.php");
 	} 

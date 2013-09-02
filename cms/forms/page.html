@@ -6,14 +6,17 @@
 
 		$pub = $_POST['pub'];
 		($pub === '0') ? $pub = false : $pub = true; 
-
-		$show = $_POST['show'];
-		($show === '0') ? $show = false : $show = true; 
 		
 		$title = $_POST['title'];
 		$content = $_POST['content'];
+		$keywords = $_POST['keywords'];
 
-		$new_page = new Page($pub, $title, $content, $show);
+		$new_page = new Page;
+		$new_page->pub = $pub;
+		$new_page->title = $title;
+		$new_page->content = $content;
+		$new_page->keywords = explode(", ", $keywords);
+
 
 		if (isset($_GET['pageKey']) && !empty($_GET['pageKey'])){
 			$key = $_GET['pageKey'];
@@ -24,13 +27,14 @@
 		}
 		
 	}
+
 	if (isset($_GET['pageKey']) && !empty($_GET['pageKey'])){
 		$key = $_GET['pageKey'];
 		$currentPage = $pages->fetch()[$key];
 
 		// echo "<pre>"; print_r($currentPage); 
 
-		$pub = $currentPage->publish;
+		$pub = $currentPage->pub;
 		$title = $currentPage->title;
 		$keywords = $currentPage->keywords;
 		$content = $currentPage->content;
